@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+
+<ul>
+    <li *ngFor="let booking of bookings">
+        <p>listing_id: {{booking.listing_id}}</p>
+        <p>booking_id: {{booking.booking_id}}</p>
+        <p>booking_date: {{booking.booking_date}}</p>
+        <p>booking_start: {{booking.booking_start}}</p>
+        <p>booking_end: {{booking.booking_end}}</p>
+        <p>username: {{booking.username}}</p>
+    </li>
+</ul>

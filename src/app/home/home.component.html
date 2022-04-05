@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<h1>Listings</h1>
+<input type="text" [(ngModel)]="search" placeholder="Search by Name, City or Postal Code" (ngModelChange)="searchEvent()">
+
+
+<div>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let listing of filteredListings; let i = index">
+        <mat-card class="mat-elevation-z4" >
+            <mat-card-header>
+              <mat-card-title>{{listing.listing_title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>ID: {{listing.id}}</p>
+              <p>listing_id: {{listing.listing_id}}</p>
+              <p>description: {{listing.description}}</p>
+              <p>street: {{listing.street}}</p>
+              <p>city: {{listing.city}}</p>
+              <p>postal_code: {{listing.postal_code}}</p>
+              <p>price: {{listing.price}}</p>
+              <p>email: {{listing.email}}</p>
+              <p>username: {{listing.username}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button *ngIf="secret" [routerLink]="['/book', listing.listing_id]">BOOK THIS LISTING</button>
+            </mat-card-actions>
+          </mat-card>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>
+        Username:
+        <input formControlName="username" placeholder="Username here">
+      </label>
+      <div *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched)) || submited">
+        Please provide a username.
+      </div>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input type="password" formControlName="password" placeholder="Super secure password here">
+      </label>
+      <div *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)) || submited">
+        Please provide a password and make sure that it's at least 6 characters long and follows the following regex 
+      </div>
+    </div>
+    <button type="submit">Send</button>
+    <button [routerLink]="['/signup']">Sign Up</button>
+</form>

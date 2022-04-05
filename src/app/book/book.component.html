@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<h1>Booking listing id {{ listing_id }}</h1>
+
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+          booking_id:
+          <input formControlName="booking_id" placeholder="booking_id here">
+        </label>
+        <div *ngIf="(bookingForm.get('booking_id')?.invalid && (bookingForm.get('booking_id')?.dirty || bookingForm.get('booking_id')?.touched))">
+          Please provide a booking_id.
+        </div>
+    </div>
+    <div>
+        <label>
+          booking_start:
+          <input type="date" formControlName="booking_start" placeholder="booking_start here">
+        </label>
+        <div *ngIf="(bookingForm.get('booking_start')?.invalid && (bookingForm.get('booking_start')?.dirty || bookingForm.get('booking_start')?.touched))">
+          Please provide a booking_start.
+        </div>
+    </div>
+    <div>
+        <label>
+          booking_end:
+          <input type="date" formControlName="booking_end" placeholder="booking_end here">
+        </label>
+        <div *ngIf="(bookingForm.get('booking_end')?.invalid && (bookingForm.get('booking_end')?.dirty || bookingForm.get('booking_end')?.touched))">
+          Please provide a booking_end.
+        </div>
+    </div>
+    
+    <button type="submit">Create Booking</button>
+</form>

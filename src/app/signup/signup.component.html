@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Username:
+      <input formControlName="username" placeholder="Your shiny new username">
+    </label>
+    <div *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched)) || submited">
+      Please provide a username.
+    </div>
+  </div>
+  <div>
+    <label>
+      First Name:
+      <input formControlName="firstname" placeholder="Your first name">
+    </label>
+    <div *ngIf="(signUpForm.get('firstname')?.invalid && (signUpForm.get('firstname')?.dirty || signUpForm.get('firstname')?.touched)) || submited">
+      Please provide a first name.
+    </div>
+  </div>
+  <div>
+    <label>
+      Last Name:
+      <input formControlName="lastname" placeholder="Your last name">
+    </label>
+    <div *ngIf="(signUpForm.get('lastname')?.invalid && (signUpForm.get('lastname')?.dirty || signUpForm.get('lastname')?.touched)) || submited">
+      Please provide a last name.
+    </div>
+  </div>
+  <div>
+    <label>
+      Password:
+      <input type="password" formControlName="password" placeholder="Your password">
+    </label>
+    <div *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)) || submited">
+      Please provide a password and make sure that it's at least 6 characters long and follows the following regex 
+    </div>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" placeholder="Your email">
+    </label>
+    <div *ngIf="(signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)) || submited">
+      Please provide a valid email.
+    </div>
+  </div>
+  <div>
+    <label>
+      Type:
+      <select formControlName="type">
+        <option value="admin">Admin</option>
+        <option value="customer">Customer</option>
+      </select>
+    </label>
+  </div>
+  <button type="submit">Send</button>
+</form>

@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '101250449_comp3133_assig2';
+  constructor(){}
+
+  ngOnChange() {}
 }

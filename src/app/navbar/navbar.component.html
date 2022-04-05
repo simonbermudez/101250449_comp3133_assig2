@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <a [routerLink]="['/']"><span>Assignment 2 - AirBNB</span></a>
+    <span *ngIf="username">&nbsp;- Welcome {{ username }}</span>
+    <div class="spacer"></div>
+    <a *ngIf="isAdmin" mat-button [routerLink]="['/admin']">Admin Panel</a>
+    <a *ngIf="isLoggedIn" mat-button [routerLink]="['/my_bookings']">My Bookings</a>
+    <a *ngIf="isLoggedIn" mat-button [routerLink]="['/logout']">Logout</a>
+    <a *ngIf="!isLoggedIn" mat-button [routerLink]="['/login']">Log In</a>
+    <a *ngIf="!isLoggedIn" mat-button [routerLink]="['/signup']">Sign Up</a>
+</mat-toolbar>
