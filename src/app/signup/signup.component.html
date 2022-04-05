@@ -28,7 +28,7 @@
           Please provide a Email.
       </div>
       <mat-form-field>
-          <input ype="password" matInput formControlName="password" placeholder="Password here">
+          <input type="password" matInput formControlName="password" placeholder="Password here">
       </mat-form-field>
       <div class="error" *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched))">
           Please provide a password.
@@ -40,7 +40,7 @@
           <option value="customer">Customer</option>
         </select>
       </mat-form-field>
-      <button mat-button type="submit">Log In</button>
-      <button mat-button [routerLink]="['/signup']">Sign Up</button>
+      <button mat-button type="submit">Sign Up</button>
+      <button mat-button [routerLink]="['/login']">Login</button>
   </div>
 </form>

@@ -15,7 +15,7 @@
         <div class="error" *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched))">
             Please provide a password.
         </div>
-        <button mat-button type="submit">Register</button>
-        <button mat-button [routerLink]="['/login']">Log In</button>
+        <button mat-button type="submit">Log in</button>
+        <button mat-button [routerLink]="['/signup']">Sign Up</button>
     </div>
 </form>
