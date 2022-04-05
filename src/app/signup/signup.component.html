@@ -1,58 +1,46 @@
 <app-navbar></app-navbar>
+<br>
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label>
-      Username:
-      <input formControlName="username" placeholder="Your shiny new username">
-    </label>
-    <div *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched)) || submited">
-      Please provide a username.
-    </div>
+  <div class="login-container">
+      <h1>Sign Up</h1>
+      <mat-form-field>
+          <input matInput formControlName="username" placeholder="Username here">
+      </mat-form-field>
+      <div class="error" *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched))">
+          Please provide a username.
+      </div>
+      <mat-form-field>
+          <input matInput formControlName="firstname" placeholder="First name here">
+      </mat-form-field>
+      <div class="error" *ngIf="(signUpForm.get('firstname')?.invalid && (signUpForm.get('firstname')?.dirty || signUpForm.get('firstname')?.touched))">
+          Please provide a first name.
+      </div>
+      <mat-form-field>
+          <input matInput formControlName="lastname" placeholder="Last name here">
+      </mat-form-field>
+      <div class="error" *ngIf="(signUpForm.get('lastname')?.invalid && (signUpForm.get('lastname')?.dirty || signUpForm.get('lastname')?.touched))">
+          Please provide a Last name.
+      </div>
+      <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email here">
+      </mat-form-field>
+      <div class="error" *ngIf="(signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('lastname')?.touched))">
+          Please provide a Email.
+      </div>
+      <mat-form-field>
+          <input ype="password" matInput formControlName="password" placeholder="Password here">
+      </mat-form-field>
+      <div class="error" *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched))">
+          Please provide a password.
+      </div>
+      <mat-form-field>
+        <mat-label>Priviledge</mat-label>
+        <select matNativeControl formControlName="type">
+          <option value="admin">Admin</option>
+          <option value="customer">Customer</option>
+        </select>
+      </mat-form-field>
+      <button mat-button type="submit">Log In</button>
+      <button mat-button [routerLink]="['/signup']">Sign Up</button>
   </div>
-  <div>
-    <label>
-      First Name:
-      <input formControlName="firstname" placeholder="Your first name">
-    </label>
-    <div *ngIf="(signUpForm.get('firstname')?.invalid && (signUpForm.get('firstname')?.dirty || signUpForm.get('firstname')?.touched)) || submited">
-      Please provide a first name.
-    </div>
-  </div>
-  <div>
-    <label>
-      Last Name:
-      <input formControlName="lastname" placeholder="Your last name">
-    </label>
-    <div *ngIf="(signUpForm.get('lastname')?.invalid && (signUpForm.get('lastname')?.dirty || signUpForm.get('lastname')?.touched)) || submited">
-      Please provide a last name.
-    </div>
-  </div>
-  <div>
-    <label>
-      Password:
-      <input type="password" formControlName="password" placeholder="Your password">
-    </label>
-    <div *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)) || submited">
-      Please provide a password and make sure that it's at least 6 characters long and follows the following regex 
-    </div>
-  </div>
-  <div>
-    <label>
-      Email:
-      <input formControlName="email" placeholder="Your email">
-    </label>
-    <div *ngIf="(signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)) || submited">
-      Please provide a valid email.
-    </div>
-  </div>
-  <div>
-    <label>
-      Type:
-      <select formControlName="type">
-        <option value="admin">Admin</option>
-        <option value="customer">Customer</option>
-      </select>
-    </label>
-  </div>
-  <button type="submit">Send</button>
 </form>

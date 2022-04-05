@@ -1,12 +1,23 @@
 <app-navbar></app-navbar>
-
-<ul>
-    <li *ngFor="let booking of bookings">
-        <p>listing_id: {{booking.listing_id}}</p>
-        <p>booking_id: {{booking.booking_id}}</p>
-        <p>booking_date: {{booking.booking_date}}</p>
-        <p>booking_start: {{booking.booking_start}}</p>
-        <p>booking_end: {{booking.booking_end}}</p>
-        <p>username: {{booking.username}}</p>
-    </li>
-</ul>
+<div class="container">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let booking of bookings; let i = index">
+        <mat-card class="mat-elevation-z4" >
+            <mat-card-header>
+              <mat-card-title>Booking - {{booking.booking_id}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>listing_id: {{booking.listing_id}}</p>
+                <p>booking_id: {{booking.booking_id}}</p>
+                <p>booking_date: {{booking.booking_date}}</p>
+                <p>booking_start: {{booking.booking_start}}</p>
+                <p>booking_end: {{booking.booking_end}}</p>
+                <p>username: {{booking.username}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <!-- [routerLink]="['/book', listing.listing_id]" -->
+            </mat-card-actions>
+          </mat-card>
+      </div>
+    </div>
+</div>

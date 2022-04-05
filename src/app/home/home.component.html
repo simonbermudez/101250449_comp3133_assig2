@@ -1,8 +1,12 @@
 <app-navbar></app-navbar>
 
 <h1>Listings</h1>
-<input type="text" [(ngModel)]="search" placeholder="Search by Name, City or Postal Code" (ngModelChange)="searchEvent()">
 
+<div class="search-container">
+    <mat-form-field>
+        <input matInput type="text" [(ngModel)]="search" placeholder="Search by Name, City or Postal Code" (ngModelChange)="searchEvent()">
+    </mat-form-field>
+</div>
 
 <div>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">

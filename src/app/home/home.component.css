@@ -1,0 +1,9 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.search-container > * {
+    width: 50%;
+    margin:auto;
+}

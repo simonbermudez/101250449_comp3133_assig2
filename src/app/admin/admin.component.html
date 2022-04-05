@@ -1,96 +1,89 @@
 <app-navbar></app-navbar>
 
-<h1>Add Listing</h1>
+<h1>Admin Panel</h1>
 
-<form [formGroup]="createListingForm" (ngSubmit)="onSubmitCreateListingForm()">
-    <div>
-      <label>
-        listing_id:
-        <input formControlName="listing_id" placeholder="listing_id here">
-      </label>
-      <div *ngIf="(createListingForm.get('listing_id')?.invalid && (createListingForm.get('listing_id')?.dirty || createListingForm.get('listing_id')?.touched))">
-        Please provide a listing_id.
-      </div>
-    </div>
-    <div>
-        <label>
-          listing_title:
-          <input formControlName="listing_title" placeholder="listing_title here">
-        </label>
-        <div *ngIf="(createListingForm.get('listing_title')?.invalid && (createListingForm.get('listing_title')?.dirty || createListingForm.get('listing_title')?.touched))">
-          Please provide a listing_title.
+<mat-tab-group dynamicHeight>
+    <mat-tab label="Manage Listings">
+        <div>
+            <div fxLayout="row wrap" fxLayoutGap="16px grid">
+              <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let listing of listings; let i = index">
+                <mat-card class="mat-elevation-z4" >
+                    <mat-card-header>
+                      <mat-card-title>{{listing.listing_title}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>ID: {{listing.id}}</p>
+                      <p>listing_id: {{listing.listing_id}}</p>
+                      <p>description: {{listing.description}}</p>
+                      <p>street: {{listing.street}}</p>
+                      <p>city: {{listing.city}}</p>
+                      <p>postal_code: {{listing.postal_code}}</p>
+                      <p>price: {{listing.price}}</p>
+                      <p>email: {{listing.email}}</p>
+                      <p>username: {{listing.username}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <!-- [routerLink]="['/book', listing.listing_id]" -->
+                        <button mat-button (click)="delete(listing.id)">DELETE THIS LISTING</button>
+                    </mat-card-actions>
+                  </mat-card>
+              </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <label>
-          description:
-          <input formControlName="description" placeholder="description here">
-        </label>
-        <div *ngIf="(createListingForm.get('description')?.invalid && (createListingForm.get('description')?.dirty || createListingForm.get('description')?.touched))">
-          Please provide a description.
-        </div>
-    </div>
-    <div>
-        <label>
-          street:
-          <input formControlName="street" placeholder="street here">
-        </label>
-        <div *ngIf="(createListingForm.get('street')?.invalid && (createListingForm.get('street')?.dirty || createListingForm.get('street')?.touched))">
-          Please provide a street.
-        </div>
-    </div>
-    <div>
-        <label>
-          city:
-          <input formControlName="city" placeholder="city here">
-        </label>
-        <div *ngIf="(createListingForm.get('city')?.invalid && (createListingForm.get('city')?.dirty || createListingForm.get('city')?.touched))">
-          Please provide a city.
-        </div>
-    </div>
-    <div>
-        <label>
-          postal_code:
-          <input formControlName="postal_code" placeholder="postal_code here">
-        </label>
-        <div *ngIf="(createListingForm.get('postal_code')?.invalid && (createListingForm.get('postal_code')?.dirty || createListingForm.get('postal_code')?.touched))">
-          Please provide a postal_code.
-        </div>
-    </div>
-    <div>
-        <label>
-          price:
-          <input type="number" formControlName="price" placeholder="price here">
-        </label>
-        <div *ngIf="(createListingForm.get('price')?.invalid && (createListingForm.get('price')?.dirty || createListingForm.get('price')?.touched))">
-          Please provide a price.
-        </div>
-    </div>
-    <div>
-        <label>
-          email:
-          <input formControlName="email" placeholder="email here">
-        </label>
-        <div *ngIf="(createListingForm.get('email')?.invalid && (createListingForm.get('email')?.dirty || createListingForm.get('email')?.touched))">
-          Please provide a email.
-        </div>
-    </div>
-    <button type="submit">Send</button>
-</form>
-
-<h1>Admin Listings</h1>
-
-<div *ngFor="let listing of listings">
-    <ul>
-        <li>ID: {{listing.id}}</li>
-        <li>listing_id: {{listing.listing_id}}</li>
-        <li>listing_title: {{listing.listing_title}}</li>
-        <li>description: {{listing.description}}</li>
-        <li>street: {{listing.street}}</li>
-        <li>city: {{listing.city}}</li>
-        <li>postal_code: {{listing.postal_code}}</li>
-        <li>price: {{listing.price}}</li>
-        <li>email: {{listing.email}}</li>
-        <li>username: {{listing.username}}</li>
-    </ul>
-</div>
+    </mat-tab>
+    <mat-tab label="Add Listing">
+            <form [formGroup]="createListingForm" (ngSubmit)="onSubmitCreateListingForm()">
+                <div class="form-container">
+                    <mat-form-field>
+                        <input matInput formControlName="listing_id" placeholder="listing_id here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('listing_id')?.invalid && (createListingForm.get('listing_id')?.dirty || createListingForm.get('listing_id')?.touched))">
+                        Please provide a listing_id.
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="listing_title" placeholder="listing_title here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('listing_title')?.invalid && (createListingForm.get('listing_title')?.dirty || createListingForm.get('listing_title')?.touched))">
+                        Please provide a listing_title.
+                    </div>
+                    <mat-form-field>
+                        <textarea matInput formControlName="description" placeholder="description here"></textarea>
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('description')?.invalid && (createListingForm.get('description')?.dirty || createListingForm.get('description')?.touched))">
+                        Please provide a description.
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="street" placeholder="street here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('street')?.invalid && (createListingForm.get('street')?.dirty || createListingForm.get('street')?.touched))">
+                        Please provide a street.
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="city" placeholder="city here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('city')?.invalid && (createListingForm.get('city')?.dirty || createListingForm.get('city')?.touched))">
+                        Please provide a city.
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="postal_code" placeholder="postal_code here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('postal_code')?.invalid && (createListingForm.get('postal_code')?.dirty || createListingForm.get('postal_code')?.touched))">
+                        Please provide a postal_code.
+                    </div>
+                    <mat-form-field>
+                        <input type="number" matInput formControlName="price" placeholder="price here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('price')?.invalid && (createListingForm.get('price')?.dirty || createListingForm.get('price')?.touched))">
+                        Please provide a price.
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="email" placeholder="email here">
+                    </mat-form-field>
+                    <div class="error" *ngIf="(createListingForm.get('email')?.invalid && (createListingForm.get('email')?.dirty || createListingForm.get('email')?.touched))">
+                        Please provide a email.
+                    </div>
+                    <button mat-button type="submit">Add Listing</button>
+                </div>
+            </form>
+    </mat-tab>
+</mat-tab-group>

@@ -1,24 +1,21 @@
 <app-navbar></app-navbar>
-
+<br>
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label>
-        Username:
-        <input formControlName="username" placeholder="Username here">
-      </label>
-      <div *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched)) || submited">
-        Please provide a username.
-      </div>
+    <div class="login-container">
+        <h1>Log In</h1>
+        <mat-form-field>
+            <input matInput formControlName="username" placeholder="Username here">
+        </mat-form-field>
+        <div class="error" *ngIf="(signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched))">
+            Please provide a username.
+        </div>
+        <mat-form-field>
+            <input type="password" matInput formControlName="password" placeholder="Password here">
+        </mat-form-field>
+        <div class="error" *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched))">
+            Please provide a password.
+        </div>
+        <button mat-button type="submit">Register</button>
+        <button mat-button [routerLink]="['/login']">Log In</button>
     </div>
-    <div>
-      <label>
-        Password:
-        <input type="password" formControlName="password" placeholder="Super secure password here">
-      </label>
-      <div *ngIf="(signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)) || submited">
-        Please provide a password and make sure that it's at least 6 characters long and follows the following regex 
-      </div>
-    </div>
-    <button type="submit">Send</button>
-    <button [routerLink]="['/signup']">Sign Up</button>
 </form>

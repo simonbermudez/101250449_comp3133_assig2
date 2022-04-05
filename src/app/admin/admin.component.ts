@@ -54,4 +54,8 @@ export class AdminComponent implements OnInit {
       this.listings = response.data.getAllAdminListings
     })
   }
+
+  delete(id: string) {
+    alert("Not implented, was not part of the requirements")
+  }
 }
